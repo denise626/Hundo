@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By April Kiser</title>
+    <title>HUNDO: A Coding Project By April Kiser</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +23,7 @@
     <!-- ==== Nav Section ==== -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/3368836-800020 (1).svg" class="d-inline-block align-text-top" width="36" height="30"> APP NAME</a>
+        <a class="navbar-brand" href="#"><img src="img/3368836-800020 (1).svg" class="d-inline-block align-text-top" width="36" height="30"> HUNDO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,20 +53,87 @@
     <!-- ==== Main Section ==== -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for HUNDO</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function HelloWorld() {
-                            alert("hello World");
-                        }
+                        
+//get the values from the Page
+//start or controller function
+function getValues() {
+    //get values from the page
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value;
+  
+    //We need to validate our input
+    //parse into Integers
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+    
+    if (Number.isInteger(startValue) && Number.isInteger(endValue)){
+        
+        //we call generateNumbers
+        let numbers = generateNumbers(startValue, endValue);
+        //we call displayNumbers
+        displayNumbers(numbers);
+    
+    }else {
+        alert("You must enter integers");
+    }    
+    
+}
+
+//generate numbers from startValue to endValue
+//logic function(s)
+function generateNumbers(sValue, eValue) {
+
+        let numbers = [];
+
+        //we want to get all numbers from start to end
+
+        for(let index = sValue; index <= eValue; index++){
+
+            //this will execute in a loop until index = eValue
+            numbers.push(index);
+        }
+        return numbers;
+
+}
+
+//display the numbers and mark even numbers bold
+//display or view functions
+function displayNumbers(numbers) {
+
+    let templateRows ="";
+
+    for (let index = 0; index < numbers.length; index++) {
+        
+        let className = "even";
+
+        let number = numbers[index];
+
+        if(number % 2 === 0) {
+            className = "even";
+        }
+        else{
+            className = "odd";
+
+        }
+        //This does render correctly with Prism see the source 
+        templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+        
+    }
+
+    document.getElementById("results").innerHTML = templateRows;
+}
                     </code>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The Code for Hundo is structured in three functions.</p>
+                    <h5>Hundo Functions</h5>
+                    <p>The function getValues allows us to get the starting and ending values that we entered into the empty value boxes. By using parseInt, we make sure that our numbers are read as integers and not strings. The if Number.isInteger is used to determine if the numbers are numbers or text values. By using &&, both the startValue and endValue have to be entered as numbers for the statement to be true and results will be displayed. If both are not entered in as numbers, the statement will revert to false and results will not display. The else statment is triggered with an alert to enter integers.</p>
+                    <p>The function generateNumbers allows us to get all numbers from the startValue to the endValue. The for loop allows us to get all the numbers from the startValue to the endValue and in between by using index++. Index++ allows a number to be added each time to the loop until it reaches the last number that was to be entered as the endValue and are returned using the return keyword.</p>
+                    <p>The function displayNumbers allows us to use a for loop to display all the numbers in the results table. An if and else statement is in the for loop to determine if the number is even or odd. The even numbers will be displayed in bold which is written in the css stylesheet.</p>
                 </div>
             </div>
         </div>
@@ -84,9 +151,9 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
+                        <div class="col social"><a href="http://www.linkedin.com/in/april-kiser" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://github.com/denise626" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://twitter.com/KiserTennille" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>
                 </div>
             </div>       
